@@ -8,13 +8,15 @@
   <image wx:if="{{searchPanelShow}}" src="/images/icon/xx.png" class="xx-img" bindtap="onCancelImgTap"></image>
 </view>
 <view class="container" wx:if="{{containerShow}}">
+  <!--正在上映  -->
   <view class="movies-template">
     <template is="movieListTemplate" data="{{...inTheaters}}" />
   </view>
-
+  <!--即将上映  -->
   <view class="movies-template">
     <template is="movieListTemplate" data="{{...comingSoon}}" />
   </view>
+  <!--top250  -->
   <view class="movies-template">
     <template is="movieListTemplate" data="{{...top250}}"/>
   </view>
