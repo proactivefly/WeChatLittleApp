@@ -14,6 +14,7 @@ Page({
   },
 // 页面加载请求首页数据
   onLoad: function (event) {
+    console.log('开始加载数据');
     //   请求地址
     var inTheatersUrl = app.globalData.doubanBase +
       "/v2/movie/in_theaters" + "?start=0&count=3";
@@ -28,19 +29,22 @@ Page({
   },
 // 点击获取更多电影
   onMoreTap: function (event) {
+    // 获取点击事件的category属性
     var category = event.currentTarget.dataset.category;
     wx.navigateTo({
+      // 豆瓣接口
       url: "more-movie/more-movie?category=" + category
     })
   },
-// 获取电影详细信息
+// 获取单个电影详细信息
   onMovieTap:function(event){
+    // 获取点击的电影id
     var movieId = event.currentTarget.dataset.movieid;
     wx.navigateTo({
       url: "movie-detail/movie-detail?id="+movieId
     })
   },
-//请求方法 
+//请求电影数据方法 
   getMovieListData: function (url, settedKey, categoryTitle) {
     //   保存上下文环境
     var that = this;
@@ -50,7 +54,7 @@ Page({
       header: {
         "Content-Type": "json"
       },
-    //   成功之后，调用
+    //   成功之后，调用处理电影数据方法
       success: function (res) {
         that.processDoubanData(res.data, settedKey, categoryTitle)
       },
@@ -82,7 +86,7 @@ Page({
     var searchUrl = app.globalData.doubanBase + "/v2/movie/search?q=" + text;
     this.getMovieListData(searchUrl, "searchResult", "");
   },
-// 处理数据
+// 处理电影数据
   processDoubanData: function (moviesDouban, settedKey, categoryTitle) {
     // 定义电影数据容器
     var movies = [];

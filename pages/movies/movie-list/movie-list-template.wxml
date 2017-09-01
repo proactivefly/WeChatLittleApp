@@ -5,13 +5,14 @@
       <view class="movie-head">
       <!--电影类型  -->
         <text class="slogan">{{categoryTitle}}</text>
+        <!-- 为每个电影列表绑定获取更多电影事件 -->
         <view catchtap="onMoreTap" class="more" data-category="{{categoryTitle}}">
           <text class="more-text">更多</text>
           <image class="more-img" src="/images/icon/arrow-right.png"></image>
         </view>
       </view>
       <view class="movies-container">
-      <!--循环该类型电影  -->
+      <!--循环该类型电影 3个 -->
       <block wx:for="{{movies}}" wx:for-item="movie">
         <template is="movieTemplate" data="{{...movie}}"/>
       </block>

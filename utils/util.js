@@ -11,7 +11,7 @@ function convertToStarsArray(stars) {
   }
   return array;
 }
-
+// 封装http请求
 function http(url, callBack) {
   wx.request({
     url: url,
